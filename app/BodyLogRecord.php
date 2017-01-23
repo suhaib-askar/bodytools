@@ -26,4 +26,7 @@ class BodyLogRecord extends Model
 	    'age'
     ];
 
+	public function weight() {
+		return ($this->weight_1 + $this->weight_2 + $this->weight_3 + $this->weight_4 + $this->weight_5) / 5;
+    }
 }

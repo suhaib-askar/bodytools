@@ -19,6 +19,7 @@ Route::group(['as' => 'authenticated::', 'middleware' => 'auth'], function() {
 	Route::put( 'log/{id?}', [ 'as' => 'log.update', 'uses' => 'BodyLogRecordController@update' ] );
 	Route::post( 'log', [ 'as' => 'log.store', 'uses' => 'BodyLogRecordController@store' ] );
 
+	Route::get('progress', [ 'as' => 'progress', 'uses' => 'BodyProgressController@show' ] );
 });
 
 Auth::routes();
