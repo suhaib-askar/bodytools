@@ -12,8 +12,26 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                {!! $chart->render() !!}
+            <div class="panel panel-default col-md-10 col-md-offset-1">
+                {!! $weight_chart->render() !!}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="panel panel-default col-md-10 col-md-offset-1">
+                {!! $bmr_chart->render() !!}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="panel panel-default col-md-10 col-md-offset-1">
+                {!! $bodyfat_chart->render() !!}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="panel panel-default col-md-10 col-md-offset-1">
+                {!! $bodydensity_chart->render() !!}
             </div>
         </div>
     </div>

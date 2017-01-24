@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('female')->default(0);
             $table->date('birthdate');
+            $table->float('height');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -12,29 +12,56 @@ class BodyProgressController extends Controller
 	public function show() {
 		$logs = BodyLogRecord::all();
 
-		$labels = $values = $weight_1 = $weight_2 = $weight_3 = $weight_4 = $weight_5 = [];
+		$labels = $values = [];
+		$labels['bodydensity'] = [];
+		$values['bodydensity'] = [];
+
+		$labels['bodyfat'] = [];
+		$values['bodyfat'] = [];
+		$labels['weight'] = [];
+		$labels['bmr'] = [];
 		foreach ( $logs as $log ) {
-			$labels[] = $log->created_at->format('m/d/Y');
-			$values[] = $log->weight();
-			$weight_1[] = $log->weight_1;
-			$weight_2[] = $log->weight_2;
-			$weight_3[] = $log->weight_3;
-			$weight_4[] = $log->weight_4;
-			$weight_5[] = $log->weight_5;
+			$labels['weight'][] = $log->created_at->format('m/d/Y');
+			$values['weight'][] = $log->weight();
+
+			if ( ! is_null($log->bodyDensity()) ) {
+				$labels['bodydensity'][] = $log->created_at->format('m/d/Y');
+				$values['bodydensity'][] = $log->bodyDensity();
+			}
+
+			if ( ! is_null($log->bodyFat()) ) {
+				$labels['bodyfat'][] = $log->created_at->format( 'm/d/Y' );
+				$values['bodyfat'][] = $log->bodyFat();
+			}
+
+			$labels['bmr'][] = $log->created_at->format('m/d/Y');
+			$values['bmr'][] = $log->basalMetabolicRate();
 		}
 
-		$chart = Charts::multi('line', 'highcharts')
-			->title('Your Weight')
-			->labels($labels)
-			->dataset('First Trial', $weight_1)
-			->dataset('Second Trial', $weight_2)
-			->dataset('Third Trial', $weight_3)
-			->dataset('Fourth Trial', $weight_4)
-			->dataset('Fifth Trial', $weight_5)
-			->dataset('Average', $values)
-			->dimensions(1000,500)
-			->responsive(false);
+		$weight_chart = Charts::multi('line', 'highcharts')
+			->title('Weight')
+			->labels($labels['weight'])
+			->dataset('Weight', $values['weight'])
+			->responsive(true);
 
-		return view('progress', compact('chart'));
+		$bodyfat_chart = Charts::multi('line', 'highcharts')
+		                      ->title('% Bodyfat')
+		                      ->labels($labels['bodyfat'])
+		                      ->dataset('% Body Fat', $values['bodyfat'])
+		                      ->responsive(true);
+
+		$bmr_chart = Charts::multi('line', 'highcharts')
+		                      ->title('Basal Metabolic Rate (BMR)')
+		                      ->labels($labels['bmr'])
+		                      ->dataset('BMR', $values['bmr'])
+		                      ->responsive(true);
+
+		$bodydensity_chart = Charts::multi('line', 'highcharts')
+		                      ->title('Body Density')
+		                      ->labels($labels['bodydensity'])
+		                      ->dataset('Body Density', $values['bodydensity'])
+		                      ->responsive(true);
+
+		return view('progress', compact('weight_chart', 'bodyfat_chart', 'bodydensity_chart', 'bmr_chart'));
     }
 }

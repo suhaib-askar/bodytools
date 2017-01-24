@@ -48,6 +48,22 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group{{ $errors->has('height') ? ' has-error' : '' }}">
+                            <label for="height" class="col-md-4 control-label">Height (inches)</label>
+
+                            <div class="col-md-6">
+                                <input id="height" type="number" class="form-control" name="height" value="{{ old('height') }}" required autofocus>
+
+                                @if ($errors->has('height'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('height') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
                             <label for="female" class="col-md-4 control-label">Gender</label>
 
