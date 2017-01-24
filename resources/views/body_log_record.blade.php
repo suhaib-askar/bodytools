@@ -24,7 +24,7 @@
                 <div class="panel-heading">Weight</div>
                 <div class="panel-block">
                         {!! Form::label('weight_1', 'Weight Trial #1', ['class' => 'label', 'style' => 'text-align: right']) !!}
-                        {!! Form::number('weight_1', $log->weight_1 or null, ['class' => 'input']) !!}
+                        {!! Form::number('weight_1', isset($log)?$log->weight_1:null, ['class' => 'input']) !!}
 
                         {!! Form::label('weight_2', 'Weight Trial #2', ['class' => 'label', 'style' => 'text-align: right']) !!}
                         {!! Form::number('weight_2', isset($log)?$log->weight_2:null, ['class' => 'input']) !!}
