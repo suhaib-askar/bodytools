@@ -24,19 +24,19 @@
                 <div class="panel-heading">Weight</div>
                 <div class="panel-block">
                         {!! Form::label('weight_1', 'Weight Trial #1', ['class' => 'label', 'style' => 'text-align: right']) !!}
-                        {!! Form::number('weight_1', isset($log)?$log->weight_1:null, ['class' => 'input']) !!}
+                        {!! Form::number('weight_1', isset($log)?$log->weight_1:null, ['class' => 'input', 'step' => '0.1']) !!}
 
                         {!! Form::label('weight_2', 'Weight Trial #2', ['class' => 'label', 'style' => 'text-align: right']) !!}
-                        {!! Form::number('weight_2', isset($log)?$log->weight_2:null, ['class' => 'input']) !!}
+                        {!! Form::number('weight_2', isset($log)?$log->weight_2:null, , 'step' => '0.1']) !!}
 
                         {!! Form::label('weight_3', 'Weight Trial #3', ['class' => 'label', 'style' => 'text-align: right']) !!}
-                        {!! Form::number('weight_3', isset($log)?$log->weight_3:null, ['class' => 'input']) !!}
+                        {!! Form::number('weight_3', isset($log)?$log->weight_3:null, , 'step' => '0.1']) !!}
 
                         {!! Form::label('weight_4', 'Weight Trial #4', ['class' => 'label', 'style' => 'text-align: right']) !!}
-                        {!! Form::number('weight_4', isset($log)?$log->weight_4:null, ['class' => 'input']) !!}
+                        {!! Form::number('weight_4', isset($log)?$log->weight_4:null, , 'step' => '0.1']) !!}
 
                         {!! Form::label('weight_5', 'Weight Trial #5', ['class' => 'label', 'style' => 'text-align: right']) !!}
-                        {!! Form::number('weight_5', isset($log)?$log->weight_5:null, ['class' => 'input']) !!}
+                        {!! Form::number('weight_5', isset($log)?$log->weight_5:null, , 'step' => '0.1']) !!}
                 <div class="panel-footer">
                     {!! Form::submit('Save', ['class' => 'btn btn-primary pull-right']) !!}
                     <div class="clearfix"></div>
