@@ -44,6 +44,7 @@ class BodyProgressController extends Controller
 			->dataset('Weight', $values['weight'])
 			->responsive(true);
 
+
 		$bodyfat_chart = Charts::multi('line', 'highcharts')
 		                      ->title('% Bodyfat')
 		                      ->labels($labels['bodyfat'])

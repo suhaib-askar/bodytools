@@ -78,7 +78,7 @@ class BodyLogRecordController extends Controller
     }
 
 	public function show($id) {
-		$log = BodyLogRecord::find($id);
+		$log = BodyLogRecord::findOrFail($id);
 
 		return view('body_log_record', compact('log'));
     }
@@ -114,16 +114,16 @@ class BodyLogRecordController extends Controller
 			'weight_3' => $request->weight_3,
 			'weight_4' => $request->weight_4,
 			'weight_5' => $request->weight_5,
-//			'chest' => $request->chest,
-//			'abdominal' => $request->abdominal,
-//			'thigh' => $request->thigh,
-//			'tricep' => $request->tricep,
-//			'axilla' => $request->axilla,
-//			'subscapular' => $request->subscapular,
-//			'supraspinale' => $request->supraspinale,
-//			'waist' => $request->waist,
-//			'forearm' => $request->forearm,
-//			'age' => $request->age
+			'chest' => $request->chest,
+			'abdominal' => $request->abdominal,
+			'thigh' => $request->thigh,
+			'tricep' => $request->tricep,
+			'axilla' => $request->axilla,
+			'subscapular' => $request->subscapular,
+			'supraspinale' => $request->supraspinale,
+			'waist' => $request->waist,
+			'forearm' => $request->forearm,
+			'age' => $request->age
 		]);
 
 		if( strlen($request->photo_front) )	{

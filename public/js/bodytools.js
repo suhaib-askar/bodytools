@@ -8,6 +8,15 @@
     'use strict';
     $(function () {
 
+        $.roundNumber = function(num, scale) {
+            var number = Math.round(num * Math.pow(10, scale)) / Math.pow(10, scale);
+            if(num - number > 0) {
+                return (number + Math.floor(2 * Math.round((num - number) * Math.pow(10, (scale + 1))) / 10) / Math.pow(10, scale));
+            } else {
+                return number;
+            }
+        };
+
         $.calculateBMR = function(female, weight, height, age) {
             return (female)?(4.35 * weight) + (4.7 * height) - (4.68 * age) - 655:(6.25 * weight) + (12.7 * height) - (6.76 * age) - 66;
         };
@@ -15,12 +24,12 @@
         $.calculateBodyDensity = function(female, chest, abdominal, thigh, age) {
 
             var Y = parseFloat(chest) + parseFloat(abdominal) + parseFloat(thigh);
-            return (female)?1.0994921 - (0.0009929 * Y) + (0.0000023 * (Y * Y)) - (0.0001392 * parseInt(age)):1.10938 - (0.0008267 * Y) + (0.0000016 * (Y * Y)) - (0.0002574 * parseInt(age));
+            return $.roundNumber( ((female)?1.0994921 - (0.0009929 * Y) + (0.0000023 * (Y * Y)) - (0.0001392 * parseInt(age)):1.10938 - (0.0008267 * Y) + (0.0000016 * (Y * Y)) - (0.0002574 * parseInt(age))), 2);
         };
 
         $.calculateBodyFat = function(female, abdominal, triceps, thigh, supraspinale, age) {
             var Y = parseFloat(abdominal) + parseFloat(triceps) + parseFloat(thigh) + parseFloat(supraspinale);
-            return (female)?(0.41563 * Y) - (0.00112 * (Y * Y)) + (0.02963 * age) + 1.4072:(0.29288 * Y) - (0.0005 * (Y*Y)) + (0.15845 * age) - 5.76377;
+            return $.roundNumber(((female)?(0.41563 * Y) - (0.00112 * (Y * Y)) + (0.02963 * age) + 1.4072:(0.29288 * Y) - (0.0005 * (Y*Y)) + (0.15845 * age) - 5.76377), 2);
         };
 
         var chest = $('#chest'),

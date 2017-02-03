@@ -23,71 +23,88 @@
             <div class="panel">
                 <div class="panel-heading">Weight</div>
                 <div class="panel-block">
-                        {!! Form::label('weight_1', 'Weight Trial #1', ['class' => 'label', 'style' => 'text-align: right']) !!}
-                        {!! Form::number('weight_1', isset($log)?$log->weight_1:null, ['class' => 'input', 'step' => '0.1']) !!}
+                    <div class="columns is-mobile">
+                        <div class="column is-full">
 
-                        {!! Form::label('weight_2', 'Weight Trial #2', ['class' => 'label', 'style' => 'text-align: right']) !!}
-                        {!! Form::number('weight_2', isset($log)?$log->weight_2:null, ['class' => 'input', 'step' => '0.1']) !!}
+                            <label class="label">Trial #1</label>
+                            <p class="control">
+                                {!! Form::number('weight_1', isset($log)?$log->weight_1:null, ['class' => 'input', 'step' => '0.1']) !!}
+                            </p>
+                            <label class="label">Trial #2</label>
+                            <p class="control">
+                            {!! Form::number('weight_2', isset($log)?$log->weight_2:null, ['class' => 'input', 'step' => '0.1']) !!}
+                            </p>
+                            <label class="label">Trial #3</label>
+                            <p class="control">
+                            {!! Form::number('weight_3', isset($log)?$log->weight_3:null, ['class' => 'input', 'step' => '0.1']) !!}
+                            </p>
+                        </div>
+                        <div class="column is-full">
+                            <label class="label">Trial #4</label>
+                            <p class="control">
+                            {!! Form::number('weight_4', isset($log)?$log->weight_4:null, ['class' => 'input', 'step' => '0.1']) !!}
+                            </p>
+                            <label class="label">Trial #5</label>
+                            <p class="control">
+                            {!! Form::number('weight_5', isset($log)?$log->weight_5:null, ['class' => 'input', 'step' => '0.1']) !!}
+                            </p>
+                            <label class="label">&nbsp;</label>
+                            {!! Form::submit('Save', ['class' => 'button is-primary is-outlined is-fullwidth']) !!}
+                        </div>
+                    </div>
 
-                        {!! Form::label('weight_3', 'Weight Trial #3', ['class' => 'label', 'style' => 'text-align: right']) !!}
-                        {!! Form::number('weight_3', isset($log)?$log->weight_3:null, ['class' => 'input', 'step' => '0.1']) !!}
-
-                        {!! Form::label('weight_4', 'Weight Trial #4', ['class' => 'label', 'style' => 'text-align: right']) !!}
-                        {!! Form::number('weight_4', isset($log)?$log->weight_4:null, ['class' => 'input', 'step' => '0.1']) !!}
-
-                        {!! Form::label('weight_5', 'Weight Trial #5', ['class' => 'label', 'style' => 'text-align: right']) !!}
-                        {!! Form::number('weight_5', isset($log)?$log->weight_5:null, ['class' => 'input', 'step' => '0.1']) !!}
-                <div class="panel-footer">
-                    {!! Form::submit('Save', ['class' => 'btn btn-primary pull-right']) !!}
-                    <div class="clearfix"></div>
-                </div>
             </div>
             <div class="panel">
                 <div class="panel-heading">Photos</div>
-                <div class="panel-body">
-                    <div class="form-group">
-                        {!! Form::label('photo_front', 'Photo Front', ['class' => 'label', 'style' => 'text-align: right']) !!}
-                        {!! Form::file('photo_front', null, ['class' => 'input']) !!}
-                        @if ( isset($log) && strlen($log->photo_front) )
-                            <img src="{!! $log->photo_front !!}" />
-                        @endif
-                    </div>
+                <div class="panel-block">
+                    <div class="columns">
+                        <div class="column">
+                            <label class="label">Front</label>
+                            <p class="control">
+                                {!! Form::file('photo_front', null, ['class' => 'input']) !!}
+                            </p>
+                            @if ( isset($log) && strlen($log->photo_front) )
+                                <img src="{!! $log->photo_front !!}" />
+                            @endif
+                        </div>
+                        <div class="column">
+                            <label class="label">Side</label>
+                            <p class="control">
+                            {!! Form::file('photo_side', null, ['class' => 'input']) !!}
+                            </p>
 
-                    <div class="row form-group">
-                        {!! Form::label('photo_side', 'Photo Side', ['class' => 'label', 'style' => 'text-align: right']) !!}
-                        {!! Form::file('photo_side', null, ['class' => 'input']) !!}
-                        @if ( isset($log) && strlen($log->photo_side) )
-                            <img src="{!! $log->photo_side !!}" />
-                        @endif
+                            @if ( isset($log) && strlen($log->photo_side) )
+                                <img src="{!! $log->photo_side !!}" />
+                            @endif
+
+                        </div>
                     </div>
-                </div>
-                <div class="panel-footer">
-                    {!! Form::submit('Save', ['class' => 'btn btn-primary pull-right']) !!}
-                    <div class="clearfix"></div>
-                </div>
             </div>
             <div class="panel">
                 <div class="panel-heading">Results</div>
-                <div class="form-group">
+                <div class="panel-block">
+                    <div class="columns is-mobile">
+                        <div class="column is-full">
+                            <label class="label">Body Density: </label>
+                            <p id="body-density" class="control">
+                                <span class="col" id="body-density-value"></span>
+                            </p>
+                        </div>
+                        <div class="column is-full">
+                            <label class="label">Body Fat: </label>
+                            <p id="body-fat" class="control">
+                                <span class="col" id="body-fat-value"></span>
+                            </p>
+                        </div>
+                        <div class="column is-full">
+                            <button id="calculate" class="button is-primary is-outlined is-fullwidth">Calculate</button>
+                        </div>
+                    </div>
 
-                </div>
-                <div class="row">
-                    <p id="body-density">
-                        <strong>Body Density: </strong>
-                        <span class="col" id="body-density-value">
 
-                    </span>
-                    </p>
-                    <p id="body-fat">
-                        <strong>Body Fat: </strong>
-                        <span class="col" id="body-fat-value">
 
-                    </span>
-                    </p>
-                </div>
-                <div class="panel-footer">
-                    <button id="calculate" class="btn btn-primary pull-right">Calculate</button>
-                    <div class="clearfix"></div>
+
+
                 </div>
             </div>
         </div>
@@ -151,7 +168,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {!! Form::label('age', 'Age Skinfold (mm)', ['class' => 'label', 'style' => 'text-align: right']) !!}
+                    {!! Form::label('age', 'Age', ['class' => 'label', 'style' => 'text-align: right']) !!}
                     <div class="col-md-6">
                         {!! Form::number('age', isset($log)?$log->age:Auth::user()->age, ['class' => 'input']) !!}
                     </div>
