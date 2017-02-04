@@ -39,15 +39,15 @@ class BodyLogRecordController extends Controller
 		$log->weight_4 = $request->weight_4;
 		$log->weight_5 = $request->weight_5;
 
-		$log->chest = is_null($request->chest)?null:$request->chest;
-		$log->abdominal = $request->abdominal;
-		$log->thigh = $request->thigh;
-		$log->tricep = $request->tricep;
-		$log->axilla = $request->axilla;
-		$log->subscapular = $request->subscapular;
-		$log->supraspinale = $request->supraspinale;
-		$log->waist = $request->waist;
-		$log->forearm = $request->forearm;
+//		$log->chest = !strlen($request->chest)?null:$request->chest;
+//		$log->abdominal = $request->abdominal;
+//		$log->thigh = $request->thigh;
+//		$log->tricep = $request->tricep;
+//		$log->axilla = $request->axilla;
+//		$log->subscapular = $request->subscapular;
+//		$log->supraspinale = $request->supraspinale;
+//		$log->waist = $request->waist;
+//		$log->forearm = $request->forearm;
 
 
 		if( strlen($request->photo_front) ) {
