@@ -39,7 +39,7 @@ class BodyLogRecordController extends Controller
 		$log->weight_4 = $request->weight_4;
 		$log->weight_5 = $request->weight_5;
 
-		$log->chest = $request->chest;
+		$log->chest = is_null($request->chest)?null:$request->chest;
 		$log->abdominal = $request->abdominal;
 		$log->thigh = $request->thigh;
 		$log->tricep = $request->tricep;
