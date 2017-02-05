@@ -8,6 +8,8 @@
     'use strict';
     $(function () {
 
+
+
         $.roundNumber = function(num, scale) {
             var number = Math.round(num * Math.pow(10, scale)) / Math.pow(10, scale);
             if(num - number > 0) {

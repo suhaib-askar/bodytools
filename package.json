@@ -2,7 +2,8 @@
   "private": true,
   "scripts": {
     "prod": "gulp --production",
-    "dev": "gulp watch"
+    "dev": "gulp watch",
+    "build": "babel src -d lib"
   },
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",

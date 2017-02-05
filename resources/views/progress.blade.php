@@ -6,34 +6,27 @@
 
 @section('scripts')
     <script src="{{ asset('js/bodytools.js') }}"></script>
+
     {!! Charts::assets() !!}
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="panel panel-default col-md-10 col-md-offset-1">
+    <div id="root" class="container">
+        <h1 style="font-size: 2em; padding: 1em 0;">Progress Charts</h1>
+        <tabs>
+            <tab name="Weight" :selected="true">
                 {!! $weight_chart->render() !!}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="panel panel-default col-md-10 col-md-offset-1">
+            </tab>
+            <tab name="BMR">
                 {!! $bmr_chart->render() !!}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="panel panel-default col-md-10 col-md-offset-1">
+            </tab>
+            <tab name="Fat">
                 {!! $bodyfat_chart->render() !!}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="panel panel-default col-md-10 col-md-offset-1">
+            </tab>
+            <tab name="Density">
                 {!! $bodydensity_chart->render() !!}
-            </div>
-        </div>
+            </tab>
+        </tabs>
     </div>
 @endsection
 
@@ -43,4 +36,5 @@
 
         });
     </script>
+    <script src="{{ asset('js/myvues.js') }}"></script>
 @endsection
