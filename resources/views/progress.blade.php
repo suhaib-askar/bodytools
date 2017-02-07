@@ -5,8 +5,6 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/bodytools.js') }}"></script>
-
     {!! Charts::assets() !!}
 @endsection
 

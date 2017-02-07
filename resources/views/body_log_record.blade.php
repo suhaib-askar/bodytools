@@ -5,7 +5,6 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/bodytools.js') }}"></script>
 @endsection
 
 @section('content')
@@ -28,15 +27,15 @@
                         <div class="column is-full">
                             <label class="label">Trial #1</label>
                             <p class="control">
-                                {!! Form::number('weight_1', isset($log)?$log->weight_1:null, ['class' => 'input', 'step' => '0.1']) !!}
+                                {!! Form::number('weight_1', isset($log)?$log->weight_1:0, ['class' => 'input', 'step' => '0.1']) !!}
                             </p>
                             <label class="label">Trial #2</label>
                             <p class="control">
-                                {!! Form::number('weight_2', isset($log)?$log->weight_2:null, ['class' => 'input', 'step' => '0.1']) !!}
+                                {!! Form::number('weight_2', isset($log)?$log->weight_2:0, ['class' => 'input', 'step' => '0.1']) !!}
                             </p>
                             <label class="label">Trial #3</label>
                             <p class="control">
-                                {!! Form::number('weight_3', isset($log)?$log->weight_3:null, ['class' => 'input', 'step' => '0.1']) !!}
+                                {!! Form::number('weight_3', isset($log)?$log->weight_3:0, ['class' => 'input', 'step' => '0.1']) !!}
                             </p>
                         </div>
                             <div class="column is-full">
@@ -44,11 +43,11 @@
 
                             <label class="label">Trial #4</label>
                             <p class="control">
-                                {!! Form::number('weight_4', isset($log)?$log->weight_4:null, ['class' => 'input', 'step' => '0.1']) !!}
+                                {!! Form::number('weight_4', isset($log)?$log->weight_4:0, ['class' => 'input', 'step' => '0.1']) !!}
                             </p>
                             <label class="label">Trial #5</label>
                             <p class="control">
-                                {!! Form::number('weight_5', isset($log)?$log->weight_5:null, ['class' => 'input', 'step' => '0.1']) !!}
+                                {!! Form::number('weight_5', isset($log)?$log->weight_5:0, ['class' => 'input', 'step' => '0.1']) !!}
                             </p>
                             <label class="label">&nbsp;</label>
                             {!! Form::submit('Save', ['class' => 'button is-primary is-outlined is-fullwidth']) !!}
@@ -67,7 +66,7 @@
                         <div class="column">
                             <label class="label">Front</label>
                             <p class="control">
-                                {!! Form::file('photo_front', null, ['class' => 'input']) !!}
+                                {!! Form::file('photo_front', null, ['class' => 'input', 'id' => 'photo_front']) !!}
                             </p>
                             @if ( isset($log) && strlen($log->photo_front) )
                                 <img src="{!! $log->photo_front !!}" />
@@ -75,7 +74,7 @@
                             <hr />
                             <label class="label">Side</label>
                             <p class="control">
-                                {!! Form::file('photo_side', null, ['class' => 'input']) !!}
+                                {!! Form::file('photo_side', null, ['class' => 'input', 'id' => 'photo_side']) !!}
                             </p>
 
                             @if ( isset($log) && strlen($log->photo_side) )
@@ -131,61 +130,67 @@
                             <div class="form-group">
                                 {!! Form::label('chest', 'Chest Skinfold (mm)', ['class' => 'label', 'style' => 'text-align: right']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::number('chest', isset($log)?$log->chest:null, ['class' => 'input']) !!}
+                                    {!! Form::number('chest', isset($log)?$log->chest:0, ['class' => 'input', 'id' => 'chest']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('tricep', 'Tricep Skinfold (mm)', ['class' => 'label', 'style' => 'text-align: right']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::number('tricep', isset($log)?$log->tricep:null, ['class' => 'input']) !!}
+                                    {!! Form::number('tricep', isset($log)?$log->tricep:0, ['class' => 'input', 'id' => 'tricep']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('abdominal', 'Abdominal Skinfold (mm)', ['class' => 'label', 'style' => 'text-align: right']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::number('abdominal', isset($log)?$log->abdominal:null, ['class' => 'input']) !!}
+                                    {!! Form::number('abdominal', isset($log)?$log->abdominal:0, ['class' => 'input', 'id' => 'abdominal']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('thigh', 'Thigh Skinfold (mm)', ['class' => 'label', 'style' => 'text-align: right']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::number('thigh', isset($log)?$log->thigh:null, ['class' => 'input']) !!}
+                                    {!! Form::number('thigh', isset($log)?$log->thigh:0, ['class' => 'input', 'id' => 'thigh']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('supraspinale', 'Supraspinale Skinfold (mm)', ['class' => 'label', 'style' => 'text-align: right']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::number('supraspinale', isset($log)?$log->supraspinale:null, ['class' => 'input']) !!}
+                                    {!! Form::number('supraspinale', isset($log)?$log->supraspinale:0, ['class' => 'input', 'id' => 'supraspinale']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('subscapular', 'Subscapular Skinfold (mm)', ['class' => 'label', 'style' => 'text-align: right']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::number('subscapular', isset($log)?$log->subscapular:null, ['class' => 'input']) !!}
+                                    {!! Form::number('subscapular', isset($log)?$log->subscapular:0, ['class' => 'input', 'id' => 'subscapular']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('axilla', 'Axilla Skinfold (mm)', ['class' => 'label', 'style' => 'text-align: right']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::number('axilla', isset($log)?$log->axilla:null, ['class' => 'input']) !!}
+                                    {!! Form::number('axilla', isset($log)?$log->axilla:0, ['class' => 'input', 'id' => 'axilla']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
-                                {!! Form::label('waist', 'Waist Skinfold (mm)', ['class' => 'label', 'style' => 'text-align: right']) !!}
+                                {!! Form::label('waist', 'Waist Circumference (m)', ['class' => 'label', 'style' => 'text-align: right']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::number('waist', isset($log)?$log->waist:null, ['class' => 'input']) !!}
+                                    {!! Form::number('waist', isset($log)?$log->waist:0, ['class' => 'input', 'id' => 'waist']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
-                                {!! Form::label('forearm', 'Forearm Skinfold (mm)', ['class' => 'label', 'style' => 'text-align: right']) !!}
+                                {!! Form::label('glutealCircumference', 'Gluteal Circumference (m)*', ['class' => 'label', 'style' => 'text-align: right']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::number('forearm', isset($log)?$log->forearm:null, ['class' => 'input']) !!}
+                                    {!! Form::number('glutealCircumference', isset($log)?$log->glutealCircumference:0, ['class' => 'input', 'id' => 'glutealCircumference']) !!}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {!! Form::label('forearm', 'Forearm Circumference (m)', ['class' => 'label', 'style' => 'text-align: right']) !!}
+                                <div class="col-md-6">
+                                    {!! Form::number('forearm', isset($log)?$log->forearm:0, ['class' => 'input', 'id' => 'forearm']) !!}
                                 </div>
                             </div>
                             <div class="form-group">
                                 {!! Form::label('age', 'Age', ['class' => 'label', 'style' => 'text-align: right']) !!}
                                 <div class="col-md-6">
-                                    {!! Form::number('age', isset($log)?$log->age:Auth::user()->age, ['class' => 'input']) !!}
+                                    {!! Form::number('age', isset($log)?$log->age:Auth::user()->age, ['class' => 'input', 'id' => 'age']) !!}
                                 </div>
                             </div>
                         </div>

@@ -30,6 +30,7 @@ class CreateBodyLogRecordsTable extends Migration
 	        $table->float('subscapular')->nullable();
 	        $table->float('thigh')->nullable();
 	        $table->float('supraspinale')->nullable();
+	        $table->float('glutealCircumference')->nullable();
 	        $table->float('waist')->nullable();
 	        $table->float('forearm')->nullable();
 	        $table->integer('age')->nullable();
