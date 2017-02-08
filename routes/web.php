@@ -14,14 +14,18 @@
 
 Route::group(['as' => 'authenticated::', 'middleware' => 'auth'], function() {
 	// Body Logs
-	Route::get( 'log', [ 'as' => 'log.create', 'uses' => 'BodyLogRecordController@create' ] );
+	Route::get( 'log', [ 'as' => 'log.index', 'uses' => 'BodyLogRecordController@index' ] );
+	Route::get( 'log/create', [ 'as' => 'log.create', 'uses' => 'BodyLogRecordController@create' ] );
 	Route::get( 'log/{id?}', [ 'as' => 'log.show', 'uses' => 'BodyLogRecordController@show' ] );
 	Route::put( 'log/{id?}', [ 'as' => 'log.update', 'uses' => 'BodyLogRecordController@update' ] );
 	Route::post( 'log', [ 'as' => 'log.store', 'uses' => 'BodyLogRecordController@store' ] );
 
 	Route::get('progress', [ 'as' => 'progress', 'uses' => 'BodyProgressController@show' ] );
+
+
+	Route::get('/', 'HomeController@index');
+	Route::get('/home', 'HomeController@index');
 });
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index');

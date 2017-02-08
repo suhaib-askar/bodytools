@@ -31,7 +31,15 @@
 @section('blocking-scripts')
     <script type="text/javascript">
         $(document).ready(function() {
-
+            Highcharts.setOptions({
+                global: {
+                    useUTC: false
+                },
+                lang: {
+                    decimalPoint: '.',
+                    thousandsSep: ','
+                }
+            });
         });
     </script>
     <script src="{{ asset('js/myvues.js') }}"></script>

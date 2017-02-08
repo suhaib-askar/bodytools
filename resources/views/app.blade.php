@@ -72,7 +72,7 @@
                 <a class="nav-item" href="{{ url('/register') }}">Register</a>
             @else
                 <span class="nav-item">
-                    <a href="#profile" class="button">
+                    <a href="/" class="button">
                         {{ Auth::user()->name }}
                     </a>
                 </span>
@@ -95,14 +95,8 @@
 
 </div>
 
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-
 <script src="js/axios.js"></script>
 <script src="js/vue.js"></script>
-{{--<script src="js/tether.min.js"></script>--}}
-{{--<script src="js/bootstrap.min.js"></script>--}}
-{{--<script src="js/app.js"></script>--}}
-
 @yield('blocking-scripts')
 </body>
 </html>

@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\BodyLogRecord;
 use ConsoleTVs\Charts\Facades\Charts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BodyProgressController extends Controller
 {
 
 	public function show() {
-		$logs = BodyLogRecord::all();
+		$logs = BodyLogRecord::where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'asc')->get();
 
 		$labels = $values = [];
 		$labels['bodydensity'] = [];

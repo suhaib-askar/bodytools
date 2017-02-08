@@ -5,12 +5,20 @@ namespace App\Http\Controllers;
 use App\BodyLogRecord;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class BodyLogRecordController extends Controller
 {
 
 	public function __construct() {
 
+	}
+
+	public function index() {
+
+		$logs = Auth::user()->logs()->get();
+
+		return view('body_log_records', compact('logs'));
 	}
 
 	public function create() {
@@ -108,7 +116,9 @@ class BodyLogRecordController extends Controller
 			'age' => 'numeric'
 		]);
 
+
 		$log = BodyLogRecord::create([
+			'user_id' => Auth::user()->id,
 			'weight_1' => $request->weight_1,
 			'weight_2' => $request->weight_2,
 			'weight_3' => $request->weight_3,

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class BodyLogRecord extends Model
 {
     protected $fillable  = [
+    	'user_id',
     	'weight_1',
     	'weight_2',
     	'weight_3',
@@ -26,6 +27,10 @@ class BodyLogRecord extends Model
 	    'waist',
 	    'age'
     ];
+
+	public function user() {
+		return $this->belongsTo('app\User');
+    }
 
 	public function weight() {
 		return ($this->weight_1 + $this->weight_2 + $this->weight_3 + $this->weight_4 + $this->weight_5) / 5;
@@ -116,9 +121,14 @@ class BodyLogRecord extends Model
     }
 
 	public function basalMetabolicRate() {
-		return (Auth::user()->female)?
-			(4.35 * $this->weight()) + (4.7 * Auth::user()->height) - (4.68 * Auth::user()->age) - 655
-			:
-			(6.25 * $this->weight()) + (12.7 * Auth::user()->height) - (6.76 * Auth::user()->age) - 66;
+ 		return round(
+			(
+				(Auth::user()->female)?
+					447.593 + ( 9.247 * ( $this->weight() / 2.20462 ) ) + ( 3.098 * ( Auth::user()->height / 0.393701 ) ) - ( 4.330 * Auth::user()->age )
+					:
+					88.362 + ( 13.397 * ( $this->weight() / 2.20462 ) ) + ( 4.799 * ( Auth::user()->height / 0.393701 ) ) - ( 5.677 * Auth::user()->age )
+			),
+			2
+		);
     }
 }

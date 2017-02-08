@@ -18,13 +18,12 @@
     {!! Form::hidden('female', Auth::user()->female, ['id' => 'female'] ) !!}
 
     <div class="columns">
-
-        <div class="column is-two-thirds">
+        <div class="column">
             <div class="panel">
                 <div class="panel-heading">Weight</div>
                 <div class="panel-block">
-                    <div class="columns is-mobile">
-                        <div class="column is-full">
+                    <div class="columns">
+                        <div class="column">
                             <label class="label">Trial #1</label>
                             <p class="control">
                                 {!! Form::number('weight_1', isset($log)?$log->weight_1:0, ['class' => 'input', 'step' => '0.1']) !!}
@@ -38,9 +37,7 @@
                                 {!! Form::number('weight_3', isset($log)?$log->weight_3:0, ['class' => 'input', 'step' => '0.1']) !!}
                             </p>
                         </div>
-                            <div class="column is-full">
-
-
+                        <div class="column">
                             <label class="label">Trial #4</label>
                             <p class="control">
                                 {!! Form::number('weight_4', isset($log)?$log->weight_4:0, ['class' => 'input', 'step' => '0.1']) !!}
@@ -53,13 +50,10 @@
                             {!! Form::submit('Save', ['class' => 'button is-primary is-outlined is-fullwidth']) !!}
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
-        <div class="column">
-            <div class="panel">
+        <div class="panel">
                 <div class="panel-heading">Photos</div>
                 <div class="panel-block">
                     <div class="columns">
@@ -90,9 +84,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-
     </div>
         <div class="columns">
             <div class="column">

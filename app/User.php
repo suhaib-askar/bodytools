@@ -31,4 +31,17 @@ class User extends Authenticatable
     public function getAgeAttribute($value) {
 		return Carbon::parse($this->birthdate)->diff(Carbon::now())->format('%y');
 	}
+
+	public function logs() {
+		return $this->hasMany('App\BodyLogRecord');
+	}
+
+	public function latestLog() {
+		return BodyLogRecord::where('user_id', '=', $this->id)->first();
+	}
+
+	public function latestPhotos() {
+    	$log = BodyLogRecord::where('user_id', '=', $this->id)->where('photo_front', '<>', 'null')->where('photo_side', '<>', 'null')->first();
+		return ['front' => $log->photo_front, 'back' => $log->photo_side];
+	}
 }
