@@ -41,7 +41,8 @@ class User extends Authenticatable
 	}
 
 	public function latestPhotos() {
-    	$log = BodyLogRecord::where('user_id', '=', $this->id)->where('photo_front', '<>', 'null')->where('photo_side', '<>', 'null')->first();
-		return ['front' => $log->photo_front, 'back' => $log->photo_side];
+    	$front = BodyLogRecord::where('user_id', '=', $this->id)->where('photo_front', '<>', 'null')->orderBy('created_at', 'desc')->first();
+    	$side = BodyLogRecord::where('user_id', '=', $this->id)->where('photo_side', '<>', 'null')->orderBy('created_at', 'desc')->first();
+		return ['front' => $front->photo_front, 'side' => $side->photo_side];
 	}
 }
