@@ -16,9 +16,11 @@ class CreateExercisesTable extends Migration
         Schema::create('exercises', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->boolean('cardio');
-            $table->string('major_muscle_group');
-	        $table->integer('five_repetition_maximum');
+            $table->string('code');
+            $table->string('type');
+            $table->boolean('cardio')->default(0);
+            $table->string('major_muscle_group')->nullable();
+	        $table->integer('five_repetition_max')->nullable();
             $table->timestamps();
         });
     }

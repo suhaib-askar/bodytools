@@ -23,6 +23,16 @@ Route::group(['as' => 'authenticated::', 'middleware' => 'auth'], function() {
 	Route::get('progress', [ 'as' => 'progress', 'uses' => 'BodyProgressController@show' ] );
 
 
+	Route::group(['as' => 'exercise::'], function() {
+		// Exercise Logs
+		Route::get( 'exercise', [ 'as' => 'index', 'uses' => 'ExerciseController@index' ] );
+		Route::get( 'exercise/create', [ 'as' => 'create', 'uses' => 'ExerciseController@create' ] );
+		Route::get( 'exercise/{id?}', [ 'as' => 'show', 'uses' => 'ExerciseController@show' ] );
+		Route::put( 'exercise/{id?}', [ 'as' => 'update', 'uses' => 'ExerciseController@update' ] );
+		Route::post( 'exercise', [ 'as' => 'store', 'uses' => 'BodyLogRecordController@store' ] );
+
+	});
+
 	Route::get('/', 'HomeController@index');
 	Route::get('/home', 'HomeController@index');
 });
